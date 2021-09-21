@@ -1,7 +1,8 @@
 //this component about rendering the date if an expense
-
+import React from "react";
 import './ExpenseDate.css';
-function ExpenseDate(props) {
+
+const  ExpenseDate= (props)=> {
     const month = props.date.toLocaleString('en-US', { month: 'long' })
     const Day = props.date.toLocaleString('en-US', { day: '2-digit' })
     const Year = props.date.getFullYear();
