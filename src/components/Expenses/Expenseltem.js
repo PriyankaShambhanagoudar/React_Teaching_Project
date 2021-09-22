@@ -9,11 +9,12 @@ const ExpenseItem = (props) => {
 
     //react hooks
       const [title, setTitle ] = useState(props.title);
+      console.log('ExpenseItem evaluted by react')
 
 
 const clickHandler =()=>{
 setTitle('Updated!');
-    console.log('Clicked!!!!')
+    console.log(title)
 }
     return (
         <Card className="expense-item ">
