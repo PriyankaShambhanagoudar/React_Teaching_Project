@@ -1,5 +1,6 @@
 // //old way react project  import React from React in all react component files 
 import React from "react";
+import NewExpense from "./components/NewExpense/NewExpense";
  import Expenses from "./components/Expenses/Expenses";
 
 const  App =()=> {
@@ -48,8 +49,8 @@ const  App =()=> {
     //easy to create 
 //JSX code
   return (
-    <div>     
-      <h2>Let's get started!</h2>
+    <div>  
+      <NewExpense/>   
       <Expenses items={expenses} />
     </div>
   );
