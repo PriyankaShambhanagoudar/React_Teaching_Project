@@ -9,7 +9,7 @@ const ExpenseItem = (props) => {
 
     //react hooks
       const [title, setTitle ] = useState(props.title);
-      console.log('ExpenseItem evaluted by react')
+    //   console.log('ExpenseItem evaluted by react')
 
 
 const clickHandler =()=>{
