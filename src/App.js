@@ -31,6 +31,10 @@ const  App =()=> {
     },
   ];
 
+  const addExpenseHandler = expense =>{
+    console.log('In App.js');
+    console.log(expense);
+  }
   //difficult to create dom  each element when its 100 or 1000 more thn this
   // const para = document.createElement('p')
   // para.textContent="This is also visiable"
@@ -50,7 +54,7 @@ const  App =()=> {
 //JSX code
   return (
     <div>  
-      <NewExpense/>   
+      <NewExpense onAddExpense ={addExpenseHandler}/>   
       <Expenses items={expenses} />
     </div>
   );
