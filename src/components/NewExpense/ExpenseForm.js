@@ -1,86 +1,115 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 
-import './ExpenseForm.css';
+import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-    const [enteredTitle, setEnteredTitle ] = useState('');
-    const [enteredAmount, setEnteredAmount ] = useState('');
-    const [enteredDate, setEnteredDate ] = useState('');
-// const [userInput, setUserInput] =useState({
-//     enteredTitle: "",
-//     enteredAmount: "",
-//     enteredDate: ""
-// });
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+  // const [userInput, setUserInput] =useState({
+  //     enteredTitle: "",
+  //     enteredAmount: "",
+  //     enteredDate: ""
+  // });
 
-    const titleChangeHandler = (event)=>{
-         setEnteredTitle(event.target.value);
-        // setUserInput({
-        //     ...userInput, 
-        //     enteredTitle: event.target.value,
-        // });
+  const titleChangeHandler = (event) => {
+    setEnteredTitle(event.target.value);
+    // setUserInput({
+    //     ...userInput,
+    //     enteredTitle: event.target.value,
+    // });
 
-        // setUserInput((prevState)=>{
-        //     return{...prevState,  enteredTitle: event.target.value} 
-        // });
-    };
+    // setUserInput((prevState)=>{
+    //     return{...prevState,  enteredTitle: event.target.value}
+    // });
+  };
 
-    const amoutChangeHandler = event =>{
-        setEnteredAmount(event.target.value);
-        // setUserInput({
-        //     ...userInput, 
-        //     enteredAmount: event.target.value,
-        // });
-
-      
-    };
-    const dateChangeHandler = event =>{
-         setEnteredDate(event.target.value);
+  const amoutChangeHandler = (event) => {
+    setEnteredAmount(event.target.value);
+    // setUserInput({
+    //     ...userInput,
+    //     enteredAmount: event.target.value,
+    // });
+  };
+  const dateChangeHandler = (event) => {
+    setEnteredDate(event.target.value);
     //     setUserInput({
-    //         ...userInput, 
+    //         ...userInput,
     //         enteredDate: event.target.value,
     //     });
-         
-     };
-     const submitHandler = (event) =>{
-         event.preventDefault()
-       
-         const expenseData ={
-             title: enteredTitle,
-             amount:enteredAmount,
-             date: new Date(enteredDate)
-         };
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
 
-          props.onSaveExpenseData(expenseData);
-         setEnteredTitle('');
-         setEnteredAmount('');
-         setEnteredDate('');
-     };
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
 
-    return( 
-    <form onSubmit={submitHandler}>
-        <div className="new-expense__controls">
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
 
-             <div className='new-expense__control'>
-                 <label>Title</label>
-                 <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
-             </div>
+  //my way canel button 
+ /*  const CancelHandler = (event)=>{
+      event.preventDefault();
+     // window.location.reload();
 
-             <div className='new-expense__control'>
-                 <label>Amount</label>
-                 <input type="number" min="0.01" step="0.01"  value={enteredAmount}  onChange={amoutChangeHandler}/>
-             </div>
+      let hideForm =document.getElementById("showOrHide");
+      if(hideForm.style.display === "none"){
+          hideForm.style.display ="block";
 
-             <div className='new-expense__control'>
-                 <label>Date</label>
-                 <input type="date" min="2019-01-01" step="2022-12-31"  value={enteredDate}  onChange = {dateChangeHandler}/>
-             </div>
-             <div className='new-expense__actions'> 
-             <button  type="submit">Add Expense</button>
-             </div>
+      }else {
+          hideForm.style.display = "none"
+      }
+  } */
+
+  
+
+  return (
+    <form onSubmit={submitHandler} id="showOrHide">
+      <div className="new-expense__controls">
+        <div className="new-expense__control">
+          <label>Title</label>
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
-    
-    </form>
-    );
 
-}
+        <div className="new-expense__control">
+          <label>Amount</label>
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={enteredAmount}
+            onChange={amoutChangeHandler}
+          />
+        </div>
+
+        <div className="new-expense__control">
+          <label>Date</label>
+          <input
+            type="date"
+            min="2019-01-01"
+            step="2022-12-31"
+            value={enteredDate}
+            onChange={dateChangeHandler}
+          />
+        </div>
+        <div className="new-expense__actions">
+          
+            <button type="button" onClick={props.onCancel}>Cancel</button>
+            <button type="submit"  >Add Expense</button>
+         
+        </div>
+      </div>
+    </form>
+  );
+};
 export default ExpenseForm;
